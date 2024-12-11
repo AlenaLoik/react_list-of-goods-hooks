@@ -36,10 +36,13 @@ function getGoodsView(sortField: SortType, reverse: boolean) {
         ? prepearedGoods.sort((a, b) => a.length - b.length).reverse()
         : prepearedGoods.sort((a, b) => a.length - b.length);
       break;
-    default:
+    case SortType.SORT_OFF:
       prepearedGoods = reverse
         ? prepearedGoods.reverse()
         : [...goodsFromServer];
+      break;
+    default:
+      prepearedGoods = [...goodsFromServer];
   }
 
   return prepearedGoods;
